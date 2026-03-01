@@ -1,0 +1,25 @@
+{
+	email {$CADDY_EMAIL}
+}
+
+keeper.or.kr {
+	root * /home/keeper/frontend_static_files
+	encode zstd gzip
+
+	route {
+		try_files {path} /index.html
+
+		@index path /index.html
+		header @index Cache-Control "no-cache, no-store, must-revalidate"
+
+		@assets not path /index.html
+		header @assets Cache-Control "public, max-age=31536000, immutable"
+
+		file_server
+	}
+}
+
+api.keeper.or.kr {
+	encode zstd gzip
+	reverse_proxy backend:8080
+}

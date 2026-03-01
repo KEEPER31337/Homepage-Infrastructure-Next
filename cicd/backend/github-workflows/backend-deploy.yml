@@ -19,7 +19,7 @@ jobs:
       - name: Build Backend Docker Image
         run: |
           docker buildx build \
-            --file ./backend.Dockerfile \
+            --file ./infra/backend.Dockerfile \
             --tag homepage-back-r2:${SHORT_SHA} \
             --load \
             .
@@ -30,13 +30,18 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: Add remote host to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
+
       - name: Send Docker Image to Server
-        run: docker pussh homepage-back-r2:${SHORT_SHA} keeper@keeper_ec2_ip
+        run: docker pussh homepage-back-r2:${SHORT_SHA} ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}
 
       - name: Renew Backend Container
         run: |
           ssh "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" "SHORT_SHA=${SHORT_SHA} bash -s" << 'EOF'
             cd /opt/keeper-infra/containers
             echo "BACKEND_TAG=${SHORT_SHA}" > .backend-ver.env
-            docker compose --env-file .env --env-file backend.env up -d --no-deps --force-recreate backend
+            docker compose --env-file .env --env-file backend-ver.env up -d --no-deps --force-recreate backend
           EOF

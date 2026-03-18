@@ -32,4 +32,4 @@ jobs:
           ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
 
       - name: Send static files to server
-        run: rsync -az -e ssh ./build "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/home/keeper/frontend_static_files"
+        run: rsync -az -e ssh ./build "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/var/lib/frontend_static_files"

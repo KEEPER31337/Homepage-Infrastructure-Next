@@ -3,7 +3,7 @@
 }
 
 keeper.or.kr {
-	root * /var/lib/frontend_static_files
+	root * /var/lib/frontend_static_files/www
 	encode zstd gzip
 
 	route {

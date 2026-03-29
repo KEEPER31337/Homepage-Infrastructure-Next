@@ -22,7 +22,7 @@ services:
     image: homepage-back-r2:${BACKEND_TAG}
     restart: unless-stopped
     volumes:
-      - /var/lib/keeper_files:/home/keeper/keeper_files
+      - /var/lib/keeper_files:/app/keeper_files
     ports:
       - 8080:8080
     environment:

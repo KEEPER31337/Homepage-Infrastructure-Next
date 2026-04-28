@@ -19,6 +19,14 @@ keeper.or.kr {
 	}
 }
 
+wiki.keeper.or.kr {
+	root * /var/lib/wiki_archive_static_files/www
+	encode zstd gzip
+
+	header Cache-Control "public, max-age=604800"
+	file_server
+}
+
 api.keeper.or.kr {
 	encode zstd gzip
 	reverse_proxy backend:8080

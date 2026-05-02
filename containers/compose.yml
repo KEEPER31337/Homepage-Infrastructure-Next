@@ -12,6 +12,7 @@ services:
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - /var/lib/frontend_static_files:/var/lib/frontend_static_files:ro
+      - /var/lib/wiki_archive_static_files:/var/lib/wiki_archive_static_files:ro
       - caddy_data:/data
       - caddy_config:/config
     depends_on:

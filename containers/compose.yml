@@ -83,7 +83,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./schema/keeper_db_schema_2026-03-19.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./schema/keeper-db-schema-2026-05-02.sql:/docker-entrypoint-initdb.d/init.sql
       - mysql_data:/var/lib/mysql
     healthcheck:
       test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]

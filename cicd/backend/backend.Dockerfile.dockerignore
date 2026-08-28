@@ -1,6 +1,1 @@
-.git
-.github
-.gradle
-build
-.idea
-*.iml
+# https://github.com/KEEPER31337/Homepage-Back-R2/blob/develop/infra/backend.Dockerfile.dockerignore

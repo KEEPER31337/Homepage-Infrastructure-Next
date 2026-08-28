@@ -163,6 +163,14 @@ INSERT INTO `member_job` (`id`, `name`) VALUES
 (11,'ROLE_BACK_전산관리자'),
 (12,'ROLE_INFRA_전산관리자');
 
+INSERT INTO `member_job` (`id`, `name`) VALUES
+(13, 'ROLE_대외부원'),
+(14, 'ROLE_학술부원'),
+(15, 'ROLE_전산관리부원'),
+(16, 'ROLE_사서부원'),
+(17, 'ROLE_서기부원'),
+(18, 'ROLE_총무부원');
+
 -- -----------------------------------------------------
 -- Data for table `static_write_title`
 -- -----------------------------------------------------

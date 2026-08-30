@@ -1,5 +1,12 @@
 {
+	metrics {
+		per_host
+	}
 	email {$CADDY_EMAIL}
+}
+
+:2019 {
+	metrics /metrics
 }
 
 keeper.or.kr {

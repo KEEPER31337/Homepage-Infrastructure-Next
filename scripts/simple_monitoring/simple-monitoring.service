@@ -1,0 +1,8 @@
+[Unit]
+Description=Simple system monitoring (CPU/disk/memory/caddy) - append to monitoring.jsonl
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/keeper/simple-monitoring
+ExecStart=/opt/keeper/simple-monitoring/.venv/bin/python main.py
+EnvironmentFile=-/opt/keeper/simple-monitoring/monitoring.env

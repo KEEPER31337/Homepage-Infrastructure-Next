@@ -98,7 +98,8 @@ INSERT INTO `member_type` (`id`, `name`, `badge_thumbnail_id`) VALUES
 (1,'비회원',NULL),
 (2,'정회원',8),
 (3,'휴면회원',7),
-(4,'졸업',5);
+(4,'졸업',5),
+(5,'가입대기',NULL);
 
 -- -----------------------------------------------------
 -- Data for table `member_rank`

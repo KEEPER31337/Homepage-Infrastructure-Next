@@ -9,6 +9,9 @@ services:
     environment:
       - TZ=Asia/Seoul
       - CADDY_EMAIL=${CADDY_EMAIL}
+      - GODEBUG=multipathtcp=0
+    sysctls:
+      - net.mptcp.enabled=0
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - /var/lib/frontend_static_files:/var/lib/frontend_static_files:ro

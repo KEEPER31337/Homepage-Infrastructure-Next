@@ -94,8 +94,20 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
-
+  
+  keepy:
+    container_name: keepy
+    image: keepy:${KEEPY_TAG}
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Seoul
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - GUILD_ID=${GUILD_ID}
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+    volumes:
+      - keepy_data:/data
 volumes:
   caddy_data:
   caddy_config:
   mysql_data:
+  keepy_data:
